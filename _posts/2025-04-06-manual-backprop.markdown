@@ -2,12 +2,9 @@
 layout: post
 title:  "The Pain and Gain of Manual Backpropagation: Why You Should Embrace the Grind"
 date:   2025-04-06
-categories: [Deep, Learning]
+categories: [Deep Learning]
 ---
 
-**[Image: A hand-drawn computational graph with gradients flowing backward, symbolizing the complexity of manual work.]**
-
----
 
 ### Introduction  
 Backpropagation is the beating heart of modern neural networks. It’s the algorithm that enables models to learn from their mistakes, tweaking weights and biases via gradient descent. But what happens when you ditch the comfort of frameworks like PyTorch or TensorFlow and tackle backpropagation *by hand*? Over the past two days, I did just that—and it was a rollercoaster of frustration, revelation, and growth.  
@@ -18,8 +15,7 @@ This blog isn’t just a technical walkthrough—it’s a story about why enduri
 
 ---
 
-### The Challenge: Why Manual Backpropagation Feels Like Climbing a Mountain  
-**[Image: A person staring at a whiteboard covered in matrices and derivatives, looking overwhelmed.]**
+### The Challenge: Why Manual Backpropagation Feels Like Climbing a Mountain 
 
 #### 1. **Tedium of Tensor Operations**  
 Manual backpropagation thrusts you into the nitty-gritty of tensor operations. Take a basic two-layer MLP: every matrix multiplication, activation, and normalization demands obsessive attention to shapes and gradients.  
@@ -53,12 +49,10 @@ The chain rule sounds simple on paper, but applying it across a sprawling comput
 This complexity hits hard when your graph has dozens of nodes.  
 
 *Change: Corrected `log(softmax(logits))` to `log_softmax(logits)` for accuracy, as frameworks optimize this way, and simplified the explanation for readability.*  
-**[Image: A computational graph for cross-entropy loss, highlighting branches for softmax and log operations.]**
 
 ---
 
 ### The Eye-Opening Insights: What You Gain From the Pain  
-**[Image: A lightbulb moment—equations simplifying on a chalkboard.]**
 
 #### 1. **Gradient Flow Becomes Intuitive**  
 Manual backpropagation makes gradient flow tangible. In cross-entropy loss:  
@@ -117,7 +111,6 @@ You’ll *feel* why architectures shine:
 This hands-on insight fuels smarter model design.  
 
 *Change: Capitalized "Intuition" for consistency and sharpened the explanations.*  
-**[Image: A comparison of gradient flow in a vanilla RNN vs. an LSTM.]**
 
 ---
 
@@ -158,7 +151,6 @@ This hands-on insight fuels smarter model design.
 ---
 
 ### A Step-by-Step Example: Backpropagating a Tiny Network  
-**[Image: A 2-layer neural network with weights, biases, and activation functions.]**
 
 Let’s walk through a single data point:  
 - Input: `x` (shape: `(1, 3)`)  
@@ -205,7 +197,6 @@ This mimics autograd’s magic, but doing it yourself cements every move.
    - Scale inputs to dodge exploding or vanishing values.  
 
    *Change: Simplified and removed redundant "large/small numbers" note.*  
-**[Image: A plot showing gradient norms exploding without proper initialization.]**
 
 ---
 
