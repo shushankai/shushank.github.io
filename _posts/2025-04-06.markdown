@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "The Pain and Gain of Manual Backpropagation: Why You Should Embrace the Grind"
-date:   2025-04-06 00:52:16 +0530
-categories: Deep Learning
+date:   2025-04-06
+categories: [Deep, Learning]
 ---
 
 **[Image: A hand-drawn computational graph with gradients flowing backward, symbolizing the complexity of manual work.]**
