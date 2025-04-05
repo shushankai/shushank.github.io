@@ -6,11 +6,7 @@ url: ""
 twitter_username: "@thisisshushank"
 github_username:  "shushankai"
 
-defaults:
-  - scope:
-      path: ""
-    values:
-      layout: post
+
 
 # Build settings
 theme: minima
