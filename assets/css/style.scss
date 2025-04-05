@@ -1,0 +1,76 @@
+@use "minima" as m;
+
+// Inherit Minima variables (optional)
+$grey-color: m.$grey-color !default;
+
+.site-header {
+  text-align: center;
+  margin: 4rem 0;
+
+  .site-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .site-nav {
+    margin: 1.5rem 0;
+    a {
+      margin: 0 1.5rem;
+      text-decoration: none;
+      color: #666;
+      font-size: 1.1rem;
+    }
+  }
+
+  .site-description {
+    margin-top: 2rem;
+    color: #666;
+    font-size: 1.2rem;
+  }
+}
+
+.post-list {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0;
+
+  .post-item {
+    list-style: none;
+    padding: 2rem 0;
+    border-bottom: 1px solid #eee;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .post-title {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+
+  .post-meta {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+}
+
+.subscribe {
+  text-align: center;
+  margin: 4rem 0;
+  padding: 2rem;
+  background: #f9f9f9;
+
+  input[type="email"] {
+    padding: 0.5rem;
+    width: 250px;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    background: #333;
+    color: white;
+    border: none;
+  }
+}
