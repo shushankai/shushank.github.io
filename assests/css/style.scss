@@ -1,0 +1,10 @@
+---
+---
+@import "minima";  // Inherit default Jekyll styles
+
+// Custom CSS
+.post-content {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 18px;
+}
