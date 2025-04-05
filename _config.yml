@@ -1,16 +1,23 @@
 title: "shushank's recent endeavors"
 email: "shushanksingh310@gmail.com"
-description: shushank’s recent endeavors is a living archive of his explorations, experiments, and everything in between.
+description: 
 baseurl: ""  # Leave empty unless using a project site (e.g., /blog)
-url: ""
+url: "http://shushankai.github.io"
 twitter_username: "@thisisshushank"
 github_username:  "shushankai"
 
 
 
 # Build settings
+markdown: kramdown
+permalink: pretty
 theme: minima
 future: true
+highlighter: rouge
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
 plugins:
   - jekyll-feed
 
