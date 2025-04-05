@@ -11,7 +11,6 @@ Backpropagation is the beating heart of modern neural networks. It’s the algor
 
 This blog isn’t just a technical walkthrough—it’s a story about why enduring the grind of manual backpropagation pays off, what you discover along the way, and how it rewires your grasp of neural networks.  
 
-*Change: Slightly rephrased the last sentence for a more engaging hook and replaced "subjecting yourself to the agony" with "enduring the grind" to align with the title’s tone.*
 
 ---
 
@@ -27,7 +26,7 @@ For instance, computing gradients in a batch normalization layer means:
 
 Miss a shape alignment—like forgetting to sum gradients after broadcasting—and you’re left with silent, insidious bugs. It’s like assembling IKEA furniture without instructions, except the pieces are ablaze.  
 
-*Change: Specified "calculating" instead of "tracking" for precision. Kept the fiery IKEA analogy but made it punchier.*
+
 
 #### 2. **Debugging Hell**  
 Debugging manual gradients is a humbling ordeal. A single misplaced transpose or botched summation can snowball into nonsense results. I lost hours puzzling over this line:  
@@ -38,7 +37,7 @@ d_logits = (probs - one_hot_labels) / batch_size  # Gradient of cross-entropy lo
 
 It looks straightforward, but pitfalls like numerical instability (e.g., softmax overflow) or misaligned labels threw me off. Gradient checking—comparing my hand-calculated gradients to autograd’s—became my saving grace.  
 
-*Change: Added a code comment for clarity and noted the specific debugging tool (gradient checking) used.*
+
 
 #### 3. **The Chain Rule, Unleashed**  
 The chain rule sounds simple on paper, but applying it across a sprawling computational graph feels like untangling a knot of holiday lights. Take the cross-entropy loss with `log_softmax(logits)` (not `log(softmax(logits))`, which is less common in practice):  
@@ -48,7 +47,7 @@ The chain rule sounds simple on paper, but applying it across a sprawling comput
 
 This complexity hits hard when your graph has dozens of nodes.  
 
-*Change: Corrected `log(softmax(logits))` to `log_softmax(logits)` for accuracy, as frameworks optimize this way, and simplified the explanation for readability.*  
+
 
 ---
 
@@ -61,7 +60,7 @@ Manual backpropagation makes gradient flow tangible. In cross-entropy loss:
 
 This push-pull dynamic—attraction for the right answer, repulsion for the wrong ones—shows exactly how models refine predictions.  
 
-*Change: Replaced vague "pulled up" and "pushed down" with precise descriptions tied to gradient signs and added intuition about the mechanism.*
+
 
 #### 2. **Numerical Stability Isn’t Optional**  
 I learned this the hard way with softmax. My first stab:  
@@ -75,7 +74,6 @@ logits = logits - logits.max(dim=1, keepdim=True).values
 ```  
 Manual work hammers home why frameworks sneak in these stability hacks.  
 
-*Change: Named the "log-sum-exp trick" for technical accuracy and clarity.*
 
 #### 3. **Autograd Is a Leaky Abstraction**  
 Frameworks hide gradient complexity, but they’re not foolproof. Batch normalization gradients, for example, hinge on:  
@@ -85,7 +83,7 @@ Frameworks hide gradient complexity, but they’re not foolproof. Batch normaliz
 
 Skipping these details manually led to exploding gradients. Peeking under autograd’s hood reveals its brilliance—and its limits.  
 
-*Change: Kept the structure but tightened the language for precision.*
+
 
 ---
 
@@ -96,12 +94,10 @@ Manual backprop turns you into a troubleshooting ninja. If your model stalls:
 - Check for vanishing gradients—maybe your initialization or activations are off.  
 - Verify weights update—zero gradients might signal a loss or optimizer glitch.  
 
-*Change: Added a concrete example (zero gradients) to illustrate the debugging benefit.*
 
 #### 2. **Custom Layers Become Approachable**  
 Dreaming up a new attention mechanism or loss function? Manual gradient skills make it doable. Take a custom batch norm layer: you need to juggle running averages during training versus fixed stats at inference—tricky, but conquerable with practice.  
 
-*Change: Clarified the example for specificity.*
 
 #### 3. **Deepened Mathematical Intuition**  
 You’ll *feel* why architectures shine:  
@@ -110,7 +106,7 @@ You’ll *feel* why architectures shine:
 
 This hands-on insight fuels smarter model design.  
 
-*Change: Capitalized "Intuition" for consistency and sharpened the explanations.*  
+
 
 ---
 
@@ -130,7 +126,7 @@ This hands-on insight fuels smarter model design.
      grad_numerical = (loss(x + eps) - loss(x - eps)) / (2 * eps)  
      assert torch.allclose(grad_manual, grad_numerical, rtol=1e-5)  # PyTorch, not NumPy  
      ```  
-   *Change: Swapped `np.allclose` for `torch.allclose` to match PyTorch context and added `eps` value.*
+
 
 3. **Beware of Broadcasting**  
    - Sum gradients when variables repeat (e.g., biases across a batch):  
@@ -139,7 +135,7 @@ This hands-on insight fuels smarter model design.
      ```  
    - Broadcasting can bite if unchecked in PyTorch.  
 
-   *Change: Updated "axis" to "dim" for PyTorch consistency and added a warning.*
+
 
 4. **Chain Rule in Layers**  
    - Split gradients into local and global pieces. For `Y = XW + b`:  
@@ -178,7 +174,7 @@ loss = 0.5 * (y_pred - y_true)**2
 
 This mimics autograd’s magic, but doing it yourself cements every move.  
 
-*Change: Fixed "axis" to "dim" for PyTorch and added a note about simplification (batches omitted).*
+
 
 ---
 
@@ -187,7 +183,6 @@ This mimics autograd’s magic, but doing it yourself cements every move.
 1. **Forgetting to Zero Gradients**  
    - Clear gradients before each backward pass, or they pile up. In PyTorch: `optimizer.zero_grad()`.  
 
-   *Change: Added PyTorch-specific advice.*
 
 2. **Incorrect Summation**  
    - Reuse a variable (like in batchnorm)? Sum all gradient paths.  
@@ -195,8 +190,7 @@ This mimics autograd’s magic, but doing it yourself cements every move.
 3. **Numerical Instability**  
    - Lean on log-sum-exp for softmax.  
    - Scale inputs to dodge exploding or vanishing values.  
-
-   *Change: Simplified and removed redundant "large/small numbers" note.*  
+ 
 
 ---
 
@@ -205,7 +199,6 @@ Manual backpropagation is like learning to cook from scratch: you savor every in
 
 Next time your model falters, ask: *Do I get the gradients?* If not, dive into the math. The insight you’ll gain is worth the sweat.  
 
-*Change: Tweaked the cooking analogy for flow and swapped "farm" for "scratch" to keep it relatable.*
 
 ---
 
